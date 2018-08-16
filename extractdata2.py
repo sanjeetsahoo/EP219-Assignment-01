@@ -31,7 +31,7 @@ plt.ylabel('Number of states')
 plt.xlabel('Number of teachers per school')
 plt.title(r'Histogram of number states with a certain number of teachers per pre-primary school(Rural)')
 plt.show()
-plt.hist(urban)						#Plot for Urban
+plt.hist(urban)					#Plot for Urban
 plt.ylabel('Number of states')
 plt.xlabel('Number of teachers per school')
 plt.title(r'Histogram of number states with a certain number of teachers per pre-primary school(Urban)')
