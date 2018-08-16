@@ -1,6 +1,7 @@
 import numpy as np					#import NumPy library
 import matplotlib.mlab as mlab   
 import matplotlib.pyplot as plt 			#import matplot Library for plotting histogram
+import seaborn as sns					#import seaborn library to aid matplot since it looks way cooler
 data = np.genfromtxt('pre_primary_school_data.csv', skip_header=1, delimiter=",", dtype=int, usecols=(12, 13, 14))
 #Extract data from csv file into NumPy array excluding first row and using integers from columns M, N, O
 c = ((data.size)/((data.ndim)+1))			#Defining number of columns in data as c
@@ -18,12 +19,14 @@ total = np.zeros((states,1))
 j = 0							#Initiating counter for feeding data from b array
 i = 0							#Initiating counter for columns of Urban, Rural and Total each
 while (i < 35):
-	rural[i] = b[j]
+	rural[i] = b[j]					
 	urban[i] = b[j+1]
 	total[i] = b[j+2] 
 	j = j+3     	
-	i = i+1 
-plt.hist(rural)						#Plot for Rural
+	i = i+1 	
+sns.set()						#seaborn
+bin_edges = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]		#defining bin edges
+plt.hist(rural, bins = bin_edges)			#Plot for Rural
 plt.ylabel('Number of states')
 plt.xlabel('Number of teachers per school')
 plt.title(r'Histogram of number states with a certain number of teachers per pre-primary school(Rural)')
@@ -33,7 +36,8 @@ plt.ylabel('Number of states')
 plt.xlabel('Number of teachers per school')
 plt.title(r'Histogram of number states with a certain number of teachers per pre-primary school(Urban)')
 plt.show()
-plt.hist(total)						#Plot for Urban
+bin_edges = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+plt.hist(total, bins = bin_edges)			#Plot for total
 plt.ylabel('Number of states')
 plt.xlabel('Number of teachers per school')
 plt.title(r'Histogram of number states with a certain number of teachers per pre-primary school(Total)')
